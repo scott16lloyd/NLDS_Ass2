@@ -44,14 +44,14 @@ public class HDDAllocation {
                 // Recursively backtrack to next file
                 if (backtrack(fileIndex + 1, allocation, remainingSpace)) {
                     return true; // If true, move upwards 
+                } else {
+                    // Otherwise the allocation did not fit, remove the file
+                    remainingSpace[hddIndex] += currentFileSize;
                 }
-
-                // Otherwise the allocation did not fit, remove the file
-                remainingSpace[hddIndex] += currentFileSize;
             }
         }
 
-        // If no allocation is possible
+        // If allocation is possible
         return false;
     }
     
