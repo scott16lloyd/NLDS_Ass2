@@ -12,7 +12,7 @@ public class HDDAllocation {
 
     public int[] generate_allocation() {
         int[] allocation = new int[files.length];
-        int[] remainingSpace = hdds;
+        int[] remainingSpace = hdds.clone(); // Create a copy of HDDs
 
         // Start at first file at index 0
         if (backtrack(0, allocation, remainingSpace)) {
@@ -51,7 +51,7 @@ public class HDDAllocation {
             }
         }
 
-        // If allocation is possible
+        // If no allocation is possible
         return false;
     }
     
